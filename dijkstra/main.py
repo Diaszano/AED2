@@ -12,7 +12,6 @@ class matrizDeGrafos:
         self.grafo = [[None] * self.vertices for i in range(self.vertices)];
         self.valorMaximo = 0;
 
-
     def adicionarAresta(self,v1:int=0,v2:int=0,peso:int=0)->None:
         self.grafo[v1-1][v2-1] = peso;
         self.grafo[v2-1][v1-1] = peso;
@@ -95,6 +94,7 @@ def limparTela()->None:
     os.system("clear || cls");
 
 def scanfInt(mensagem:str = '')->int:
+    limparTela();
     valor = input(mensagem);
     if not(valor.isdigit()):
         valor = scanfInt(mensagem=mensagem);
@@ -107,9 +107,6 @@ if __name__ == '__main__':
     while((numerosDeVertices <= 0) or (numerosDeVertices > 20)):
         mensagem = f"Digite a quantidade de vertices entre 1-20: ";
         numerosDeVertices = scanfInt(mensagem=mensagem);
-        print(numerosDeVertices);
-        print(type(numerosDeVertices));
-        pausarTela()
     grafo = matrizDeGrafos(vertices=numerosDeVertices);
 
     while(True):
