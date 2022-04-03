@@ -57,8 +57,8 @@ class matrizDeGrafos:
         distancia  = [custo[origem][i] for i in range(self.vertices)];
         vizinho    = [0 for _ in range(self.vertices)];
         [distancia[origem],vizinho[origem]] = [0,1];
-        [contador,melhor] = [0,0];
-        while(contador < self.vertices - 1):
+        melhor = 0;
+        for _ in range(self.vertices-1):
             menorDistancia = self.valorMaximo;
             for i in range(self.vertices):
                 if((distancia[i] < menorDistancia) and (vizinho[i] == 0) and (distancia[i] != nulo)):
@@ -70,7 +70,6 @@ class matrizDeGrafos:
                     if((menorDistancia + custo[melhor][i]) < distancia[i]):
                         distancia[i] = menorDistancia + custo[melhor][i];
                         tmp[i] = melhor;
-            contador += 1;
         mensagem = f"{self.tostring()}\n\n";
         
         for i in range(self.vertices):
@@ -112,8 +111,7 @@ if __name__ == '__main__':
     while(True):
         limparTela();
         mensagem = f"\tMenu\n1 - Inserir arestas com seus pesos\n2 - Imprimir a matriz de adjacência\n3 - Imprimir o menor caminho\n4 - Sair";
-        print(mensagem);
-        mensagem = f"Opcao: ";
+        mensagem += f"\nOpcao: ";
         opcao = scanfInt(mensagem=mensagem)
         if opcao == 1:
             vertice = [];
